@@ -1,0 +1,33 @@
+<h3 class="text text-primary bg-danger">Forecast for {{ city }}</h3>
+<hr/>
+<a href="#/">Back To Search</a>
+<hr/>
+No of Days: <a href="#/foreCast/2" ng-class="{'bg-success': days==='2'}">2</a> | <a href="#/foreCast/5" ng-class="{'bg-success': days==='5'}">5</a> |
+<a href="#/foreCast/8" ng-class="{'bg-success': days==='8'}">8</a> | <a href="#/foreCast/10" ng-class="{'bg-success': days==='10'}">10</a> |
+<a href="#/foreCast/16" ng-class="{'bg-success': days==='16'}">16</a>
+
+<div ng-repeat="w in weatherResult.list">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+            <div class="panel panel-info">
+                <div class="panel panel-heading">
+                    <h3 class="panel-title">{{convertToDate(w.dt) | date:'MMM,d,y'}}</h3>
+
+                </div>
+                <div class="panel panel-body" >
+                    Day Temperature &nbsp; : {{convertToCentigrade(w.temp.day)}}
+
+
+
+
+                    <br>
+                    Night Temperature : {{convertToCentigrade(w.temp.night)}}
+                    <div ng-repeat="p in w.weather">Weather : <span class="text text-danger">{{p.main }}</span><span class="text text-success">&nbsp( {{(p.description)}})</span>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
